@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DR ARMACI | Marketplace Digital</title>
+    <title>DR ARMACI — Marketplace Digital</title>
 
-    <meta name="description" content="DR ARMACI é uma plataforma para descobrir, comprar e vender produtos digitais.">
+    <meta name="description"
+          content="Descobre, compra e vende produtos digitais no DR ARMACI.">
 
     <style>
         :root {
-            --azul: #101A3A;
-            --violeta: #6C4DFF;
-            --dourado: #F2B84B;
-            --fundo: #F4F5F8;
-            --branco: #FFFFFF;
-            --texto: #252A3A;
+            --navy: #101A3A;
+            --purple: #6C4DFF;
+            --gold: #F2B84B;
+            --background: #F4F5F8;
+            --white: #FFFFFF;
+            --text: #252A3A;
+            --muted: #6B7280;
+            --border: #E4E7EF;
+            --green: #16865C;
         }
 
         * {
@@ -30,78 +34,124 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: var(--fundo);
-            color: var(--texto);
+            color: var(--text);
+            background: var(--background);
             line-height: 1.6;
+        }
+
+        button, input, select {
+            font: inherit;
+        }
+
+        button, a {
+            -webkit-tap-highlight-color: transparent;
         }
 
         a {
             text-decoration: none;
         }
 
+        button {
+            cursor: pointer;
+        }
+
+        .container {
+            width: min(1160px, 92%);
+            margin: auto;
+        }
+
+        /* CABEÇALHO */
+
         header {
-            background: var(--azul);
-            color: var(--branco);
-            padding: 18px 5%;
+            background: var(--navy);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .navbar {
-            max-width: 1200px;
-            margin: auto;
+            min-height: 76px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-            flex-wrap: wrap;
         }
 
         .logo {
-            font-size: 27px;
-            font-weight: bold;
-            color: var(--dourado);
+            color: var(--gold);
+            font-size: 25px;
+            font-weight: 900;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .logo span {
-            color: var(--branco);
+            color: var(--white);
         }
 
         nav {
             display: flex;
             gap: 20px;
+            align-items: center;
             flex-wrap: wrap;
         }
 
         nav a {
-            color: var(--branco);
+            color: var(--white);
             font-size: 14px;
         }
 
         nav a:hover {
-            color: var(--dourado);
+            color: var(--gold);
         }
 
+        .header-button {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 10px 15px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        /* PÁGINA INICIAL */
+
         .hero {
-            background: linear-gradient(135deg, #101A3A, #352477);
-            color: var(--branco);
+            background: linear-gradient(135deg, #101A3A, #342477);
+            color: var(--white);
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            max-width: 790px;
+            margin: auto;
             text-align: center;
-            padding: 75px 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 13px;
+            border: 1px solid #8172DB;
+            border-radius: 30px;
+            color: var(--gold);
+            margin-bottom: 22px;
+            font-size: 13px;
         }
 
         .hero h1 {
-            font-size: clamp(32px, 6vw, 52px);
-            margin-bottom: 18px;
-            line-height: 1.2;
+            font-size: clamp(34px, 6vw, 56px);
+            line-height: 1.13;
+            margin-bottom: 22px;
         }
 
         .hero h1 span {
-            color: var(--dourado);
+            color: var(--gold);
         }
 
         .hero p {
             max-width: 650px;
             margin: 0 auto 28px;
-            color: #E1E4F0;
+            color: #E0E4F2;
             font-size: 17px;
         }
 
@@ -109,177 +159,400 @@
             display: inline-block;
             border: none;
             border-radius: 8px;
-            background: var(--violeta);
-            color: var(--branco);
-            padding: 13px 22px;
+            padding: 13px 20px;
             font-weight: bold;
-            cursor: pointer;
-            font-size: 15px;
+            background: var(--purple);
+            color: var(--white);
         }
 
         .button:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
+            opacity: .9;
         }
 
         .button-gold {
-            background: var(--dourado);
-            color: var(--azul);
+            background: var(--gold);
+            color: var(--navy);
         }
 
-        .search-area {
-            max-width: 650px;
-            margin: 28px auto 0;
+        .hero-search {
             display: flex;
+            max-width: 620px;
             gap: 10px;
+            margin: 30px auto 0;
         }
 
-        .search-area input {
-            min-width: 0;
+        .hero-search input {
             flex: 1;
-            padding: 14px;
-            border: 1px solid #D8DBE5;
+            min-width: 0;
+            padding: 15px;
+            border: none;
             border-radius: 8px;
-            font-size: 15px;
+            outline: none;
         }
+
+        /* SECÇÕES */
 
         .section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 55px 5%;
+            padding: 65px 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
         }
 
         .section-title h2 {
-            color: var(--azul);
-            font-size: 30px;
+            font-size: clamp(25px, 4vw, 34px);
+            color: var(--navy);
             margin-bottom: 8px;
         }
 
         .section-title p {
-            color: #62697A;
+            color: var(--muted);
         }
 
-        .categories {
+        /* CATEGORIAS */
+
+        .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .category-card {
+            background: var(--white);
+            padding: 23px 12px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            transition: .2s;
+            cursor: pointer;
+        }
+
+        .category-card:hover,
+        .category-card.active {
+            border-color: var(--purple);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px #101a3a12;
+        }
+
+        .category-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .category-card h3 {
+            font-size: 15px;
+            color: var(--navy);
+        }
+
+        .category-card p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        /* CATÁLOGO */
+
+        .catalog {
+            background: #ECEEF5;
+        }
+
+        .catalog-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .catalog-toolbar p {
+            color: var(--muted);
+        }
+
+        .catalog-toolbar select {
+            padding: 11px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            max-width: 100%;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 20px;
         }
 
-        .category {
-            background: var(--branco);
-            padding: 25px 20px;
+        .product-card {
+            background: var(--white);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 18px rgba(16, 26, 58, 0.07);
-            transition: transform 0.2s;
+            overflow: hidden;
+            transition: .2s;
         }
 
-        .category:hover {
+        .product-card:hover {
             transform: translateY(-4px);
+            box-shadow: 0 10px 25px #101a3a12;
         }
 
-        .category .icon {
-            font-size: 38px;
-            margin-bottom: 12px;
+        .product-art {
+            min-height: 155px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 47px;
+            background: linear-gradient(135deg, #DCD7FF, #F6E8FF);
         }
 
-        .category h3 {
-            color: var(--azul);
-            margin-bottom: 8px;
+        .product-card:nth-child(2n) .product-art {
+            background: linear-gradient(135deg, #D8E9FF, #E7F5FF);
         }
 
-        .category p {
-            color: #62697A;
-            font-size: 14px;
-            margin-bottom: 16px;
+        .product-card:nth-child(3n) .product-art {
+            background: linear-gradient(135deg, #FFE7BB, #FFF5E2);
         }
 
-        .category button {
-            background: transparent;
-            border: 1px solid var(--violeta);
-            color: var(--violeta);
-            padding: 9px 15px;
-            border-radius: 6px;
-            cursor: pointer;
+        .product-info {
+            padding: 17px;
+        }
+
+        .product-category {
+            color: var(--purple);
+            font-size: 12px;
             font-weight: bold;
         }
 
-        .category button:hover {
-            background: var(--violeta);
-            color: var(--branco);
+        .product-info h3 {
+            color: var(--navy);
+            font-size: 17px;
+            margin: 6px 0;
         }
 
-        .notice {
-            display: none;
-            max-width: 700px;
-            margin: 20px auto 0;
-            padding: 14px;
-            border-radius: 8px;
-            background: #E8E3FF;
-            color: var(--azul);
-            text-align: center;
+        .product-description {
+            color: var(--muted);
+            font-size: 13px;
+            min-height: 42px;
         }
+
+        .seller-name {
+            font-size: 12px;
+            color: var(--muted);
+            margin: 12px 0;
+        }
+
+        .product-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            border-top: 1px solid var(--border);
+            padding-top: 13px;
+        }
+
+        .price {
+            color: var(--navy);
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .product-bottom button {
+            padding: 9px 11px;
+            font-size: 12px;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            background: var(--white);
+            padding: 35px 15px;
+            border-radius: 10px;
+        }
+
+        /* VENDEDORES */
 
         .seller-section {
-            background: var(--azul);
-            color: var(--branco);
+            background: var(--navy);
+            color: var(--white);
+            padding: 65px 20px;
             text-align: center;
-            padding: 55px 20px;
         }
 
         .seller-section h2 {
-            font-size: 30px;
-            margin-bottom: 12px;
+            font-size: clamp(26px, 4vw, 35px);
+            margin-bottom: 15px;
         }
 
         .seller-section p {
             max-width: 650px;
+            color: #DDE2F0;
             margin: 0 auto 25px;
-            color: #E1E4F0;
         }
 
-        footer {
-            background: #080F26;
-            color: #D5D9E6;
-            padding: 25px 5%;
+        /* VANTAGENS */
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .benefit {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
             text-align: center;
+        }
+
+        .benefit div {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .benefit h3 {
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .benefit p {
+            color: var(--muted);
             font-size: 14px;
         }
 
-        footer strong {
-            color: var(--dourado);
+        /* RODAPÉ */
+
+        footer {
+            background: #080F26;
+            color: #D3D8E7;
+            padding: 35px 0;
+            text-align: center;
+        }
+
+        footer .logo {
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* JANELA DE AVISO */
+
+        .message-box {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #0009;
+            z-index: 200;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .message-box.show {
+            display: flex;
+        }
+
+        .message-content {
+            background: var(--white);
+            max-width: 420px;
+            width: 100%;
+            padding: 28px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .message-content h3 {
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .message-content p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        /* TELEMÓVEIS E TABLETS */
+
+        @media (max-width: 950px) {
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
 
         @media (max-width: 600px) {
             .navbar {
+                padding: 15px 0;
                 flex-direction: column;
             }
 
             nav {
                 justify-content: center;
-                gap: 14px;
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 13px;
             }
 
             .hero {
-                padding: 55px 18px;
+                padding: 55px 0;
             }
 
-            .search-area {
+            .hero-search {
                 flex-direction: column;
             }
 
-            .search-area .button {
+            .hero-search .button {
                 width: 100%;
             }
 
-            .section-title h2,
-            .seller-section h2 {
-                font-size: 25px;
+            .category-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .product-art {
+                min-height: 115px;
+                font-size: 38px;
+            }
+
+            .product-info {
+                padding: 12px;
+            }
+
+            .product-info h3 {
+                font-size: 15px;
+            }
+
+            .product-bottom {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .product-bottom button {
+                width: 100%;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 45px 0;
             }
         }
     </style>
@@ -288,207 +561,237 @@
 <body>
 
 <header>
-    <div class="navbar">
-        <a href="#" class="logo">
+    <div class="container navbar">
+
+        <a href="#inicio" class="logo">
             DR <span>ARMACI</span>
         </a>
 
         <nav>
             <a href="#inicio">Início</a>
             <a href="#categorias">Categorias</a>
-            <a href="#vendedores">Vendedores</a>
+            <a href="#loja">Loja</a>
+            <a href="#vendedores">Vender</a>
         </nav>
+
+        <a href="#loja" class="header-button">Explorar loja</a>
+
     </div>
 </header>
 
 <main>
 
+    <!-- PÁGINA INICIAL -->
+
     <section class="hero" id="inicio">
-        <h1>
-            As Tuas Ideias Merecem<br>
-            <span>um Palco Global</span>
-        </h1>
+        <div class="container hero-content">
 
-        <p>
-            Descobre, compra e vende produtos digitais numa plataforma
-            criada para aproximar criadores e clientes de todo o mundo.
-        </p>
+            <div class="badge">
+                O teu mercado digital internacional
+            </div>
 
-        <a href="#categorias" class="button button-gold">
-            Explorar Produtos
-        </a>
+            <h1>
+                Cria. Vende. <span>Descobre.</span>
+            </h1>
 
-        <form class="search-area" id="searchForm">
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Pesquisar música, vídeos, livros..."
-                aria-label="Pesquisar produtos"
-            >
+            <p>
+                Música, vídeos, livros, fotografias, designs e ferramentas
+                digitais num único lugar. Descobre o talento do mundo
+                e prepara os teus produtos para um público global.
+            </p>
 
-            <button type="submit" class="button">
-                Pesquisar
-            </button>
-        </form>
+            <a href="#loja" class="button button-gold">
+                Explorar produtos
+            </a>
 
-        <div class="notice" id="searchNotice" role="status"></div>
+            <form class="hero-search" id="searchForm">
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="O que procuras hoje?"
+                    aria-label="Pesquisar produtos"
+                >
+
+                <button class="button" type="submit">
+                    Pesquisar
+                </button>
+
+            </form>
+
+        </div>
     </section>
+
+    <!-- CATEGORIAS -->
 
     <section class="section" id="categorias">
-        <div class="section-title">
-            <h2>Explora as Categorias</h2>
-            <p>Encontra produtos digitais para os teus interesses e projetos.</p>
-        </div>
+        <div class="container">
 
-        <div class="categories">
+            <div class="section-title">
+                <h2>Explora as categorias</h2>
+                <p>Encontra conteúdos digitais para os teus interesses.</p>
+            </div>
 
-            <article class="category" data-category="Música e Áudio">
-                <div class="icon">🎵</div>
-                <h3>Música e Áudio</h3>
-                <p>Músicas, instrumentais, batidas e efeitos sonoros.</p>
-                <button type="button" class="category-button">
-                    Explorar
+            <div class="category-grid">
+
+                <button class="category-card" data-filter="Música">
+                    <div class="category-icon">🎵</div>
+                    <h3>Música e Áudio</h3>
+                    <p>Músicas e instrumentais</p>
                 </button>
-            </article>
 
-            <article class="category" data-category="Vídeos e Filmes">
-                <div class="icon">🎬</div>
-                <h3>Vídeos e Filmes</h3>
-                <p>Vídeos, filmes independentes e conteúdos educativos.</p>
-                <button type="button" class="category-button">
-                    Explorar
+                <button class="category-card" data-filter="Vídeo">
+                    <div class="category-icon">🎬</div>
+                    <h3>Vídeos e Filmes</h3>
+                    <p>Vídeos e cursos</p>
                 </button>
-            </article>
 
-            <article class="category" data-category="Design e Fotografia">
-                <div class="icon">🎨</div>
-                <h3>Design e Fotografia</h3>
-                <p>Fotografias, ilustrações, logótipos e modelos gráficos.</p>
-                <button type="button" class="category-button">
-                    Explorar
+                <button class="category-card" data-filter="Design">
+                    <div class="category-icon">🎨</div>
+                    <h3>Design e Fotografia</h3>
+                    <p>Imagens e modelos</p>
                 </button>
-            </article>
 
-            <article class="category" data-category="Livros e Educação">
-                <div class="icon">📚</div>
-                <h3>Livros e Educação</h3>
-                <p>E-books, cursos, manuais e materiais de aprendizagem.</p>
-                <button type="button" class="category-button">
-                    Explorar
+                <button class="category-card" data-filter="E-book">
+                    <div class="category-icon">📚</div>
+                    <h3>Livros e Educação</h3>
+                    <p>Livros e aprendizagem</p>
                 </button>
-            </article>
 
-            <article class="category" data-category="Software e Ferramentas">
-                <div class="icon">💻</div>
-                <h3>Software e Ferramentas</h3>
-                <p>Aplicações, modelos, recursos e ferramentas digitais.</p>
-                <button type="button" class="category-button">
-                    Explorar
+                <button class="category-card" data-filter="Software">
+                    <div class="category-icon">💻</div>
+                    <h3>Software</h3>
+                    <p>Ferramentas digitais</p>
                 </button>
-            </article>
+
+            </div>
 
         </div>
-
-        <div class="notice" id="categoryNotice" role="status"></div>
     </section>
 
-    <section class="seller-section" id="vendedores">
-        <h2>Vende os Teus Produtos no DR ARMACI</h2>
+    <!-- CATÁLOGO DE PRODUTOS -->
 
-        <p>
-            És músico, escritor, designer, programador ou criador de conteúdo?
-            O objetivo é permitir que apresentes os teus produtos a clientes
-            de diferentes países.
-        </p>
+    <section class="section catalog" id="loja">
+        <div class="container">
 
-        <button type="button" class="button button-gold" id="sellerButton">
-            Quero Ser Vendedor
-        </button>
+            <div class="section-title">
+                <h2>Descobre produtos digitais</h2>
+                <p>Explora os exemplos apresentados na nossa loja.</p>
+            </div>
 
-        <div class="notice" id="sellerNotice" role="status"></div>
-    </section>
+            <div class="catalog-toolbar">
 
-</main>
+                <p id="resultCount">A apresentar produtos de demonstração</p>
 
-<footer>
-    <p>
-        © <span id="currentYear"></span>
-        <strong>DR ARMACI</strong>.
-        Todos os direitos reservados.
-    </p>
+                <select id="sortSelect" aria-label="Ordenar produtos">
+                    <option value="default">Ordenação padrão</option>
+                    <option value="low">Preço: menor para maior</option>
+                    <option value="high">Preço: maior para menor</option>
+                    <option value="name">Nome: A–Z</option>
+                </select>
 
-    <p>Uma plataforma digital em desenvolvimento.</p>
-</footer>
+            </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
+            <div class="product-grid" id="productGrid">
 
-        // Atualizar automaticamente o ano
-        document.getElementById("currentYear").textContent =
-            new Date().getFullYear();
+                <!-- PRODUTO 1 -->
 
-        // Pesquisa demonstrativa
-        const searchForm = document.getElementById("searchForm");
-        const searchInput = document.getElementById("searchInput");
-        const searchNotice = document.getElementById("searchNotice");
+                <article class="product-card"
+                         data-category="Música"
+                         data-name="Batidas Africanas"
+                         data-price="5">
 
-        searchForm.addEventListener("submit", function (event) {
-            event.preventDefault();
+                    <div class="product-art">🎵</div>
 
-            const term = searchInput.value.trim();
+                    <div class="product-info">
+                        <span class="product-category">MÚSICA</span>
+                        <h3>Batidas Africanas</h3>
 
-            searchNotice.style.display = "block";
+                        <p class="product-description">
+                            Coleção demonstrativa de ritmos e instrumentais.
+                        </p>
 
-            if (!term) {
-                searchNotice.textContent =
-                    "Escreve o nome do produto que pretendes encontrar.";
-                searchInput.focus();
-                return;
-            }
+                        <p class="seller-name">Por: Criador Digital</p>
 
-            searchNotice.textContent =
-                'Pesquisaste por "' + term +
-                '". O catálogo de produtos será ligado numa próxima versão.';
-        });
+                        <div class="product-bottom">
+                            <span class="price">$5,00</span>
 
-        // Botões das categorias
-        const categoryButtons =
-            document.querySelectorAll(".category-button");
+                            <button class="button buy-button" type="button">
+                                Ver produto
+                            </button>
+                        </div>
+                    </div>
+                </article>
 
-        const categoryNotice =
-            document.getElementById("categoryNotice");
+                <!-- PRODUTO 2 -->
 
-        categoryButtons.forEach(function (button) {
-            button.addEventListener("click", function () {
-                const category = button.closest(".category")
-                    .getAttribute("data-category");
+                <article class="product-card"
+                         data-category="E-book"
+                         data-name="Guia de Negócios"
+                         data-price="8">
 
-                categoryNotice.style.display = "block";
-                categoryNotice.textContent =
-                    'Selecionaste "' + category +
-                    '". Os produtos desta categoria serão apresentados ' +
-                    "quando o catálogo estiver disponível.";
+                    <div class="product-art">📚</div>
 
-                categoryNotice.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-            });
-        });
+                    <div class="product-info">
+                        <span class="product-category">E-BOOK</span>
+                        <h3>Guia de Negócios</h3>
 
-        // Registo demonstrativo de vendedores
-        const sellerButton = document.getElementById("sellerButton");
-        const sellerNotice = document.getElementById("sellerNotice");
+                        <p class="product-description">
+                            Material de exemplo para aprender sobre negócios.
+                        </p>
 
-        sellerButton.addEventListener("click", function () {
-            sellerNotice.style.display = "block";
-            sellerNotice.textContent =
-                "O registo de vendedores ainda está em desenvolvimento. " +
-                "Esta função será ativada quando o sistema de contas estiver pronto.";
-        });
+                        <p class="seller-name">Por: Autor Digital</p>
 
-    });
-</script>
+                        <div class="product-bottom">
+                            <span class="price">$8,00</span>
 
-</body>
-    </html>
+                            <button class="button buy-button" type="button">
+                                Ver produto
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUTO 3 -->
+
+                <article class="product-card"
+                         data-category="Design"
+                         data-name="Pacote de Designs"
+                         data-price="10">
+
+                    <div class="product-art">🎨</div>
+
+                    <div class="product-info">
+                        <span class="product-category">DESIGN</span>
+                        <h3>Pacote de Designs</h3>
+
+                        <p class="product-description">
+                            Modelos gráficos para projetos criativos.
+                        </p>
+
+                        <p class="seller-name">Por: Estúdio Criativo</p>
+
+                        <div class="product-bottom">
+                            <span class="price">$10,00</span>
+
+                            <button class="button buy-button" type="button">
+                                Ver produto
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PRODUTO 4 -->
+
+                <article class="product-card"
+                         data-category="Vídeo"
+                         data-name="Curso em Vídeo"
+                         data-price="12">
+
+                    <div class="product-art">🎬</div>
+
+                    <div class="product-info">
+                        <span class="product-category">VÍDEO</span>
+                        <h3>Curso em Vídeo</h3>
+
+                        <p class="product-desc
