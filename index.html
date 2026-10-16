@@ -1,183 +1,494 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DR ARMACI | Digital Marketplace</title>
+    <title>DR ARMACI | Marketplace Digital</title>
+
+    <meta name="description" content="DR ARMACI é uma plataforma para descobrir, comprar e vender produtos digitais.">
 
     <style>
-        body {
+        :root {
+            --azul: #101A3A;
+            --violeta: #6C4DFF;
+            --dourado: #F2B84B;
+            --fundo: #F4F5F8;
+            --branco: #FFFFFF;
+            --texto: #252A3A;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #F4F5F8;
-            color: #252A35;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--fundo);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
         }
 
         header {
-            background: #101A3A;
-            color: white;
-            padding: 25px 15px;
-            text-align: center;
+            background: var(--azul);
+            color: var(--branco);
+            padding: 18px 5%;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 30px;
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        header p {
-            color: #F2B84B;
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: var(--dourado);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--branco);
         }
 
         nav {
-            background: #6C4DFF;
-            padding: 15px;
-            text-align: center;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
+            color: var(--branco);
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: var(--dourado);
         }
 
         .hero {
+            background: linear-gradient(135deg, #101A3A, #352477);
+            color: var(--branco);
             text-align: center;
-            padding: 55px 20px;
-            background: white;
+            padding: 75px 20px;
         }
 
-        .hero h2 {
-            color: #101A3A;
-            font-size: 32px;
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 52px);
+            margin-bottom: 18px;
+            line-height: 1.2;
         }
 
-        .hero span {
-            color: #6C4DFF;
+        .hero h1 span {
+            color: var(--dourado);
         }
 
         .hero p {
-            line-height: 1.7;
+            max-width: 650px;
+            margin: 0 auto 28px;
+            color: #E1E4F0;
+            font-size: 17px;
         }
 
         .button {
             display: inline-block;
-            background: #6C4DFF;
-            color: white;
-            padding: 14px 24px;
-            margin-top: 15px;
-            text-decoration: none;
+            border: none;
             border-radius: 8px;
+            background: var(--violeta);
+            color: var(--branco);
+            padding: 13px 22px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .button-gold {
+            background: var(--dourado);
+            color: var(--azul);
+        }
+
+        .search-area {
+            max-width: 650px;
+            margin: 28px auto 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-area input {
+            min-width: 0;
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #D8DBE5;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 55px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            color: var(--azul);
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #62697A;
         }
 
         .categories {
-            padding: 30px 15px;
-            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 20px;
         }
 
         .category {
-            background: white;
-            padding: 20px;
-            margin: 15px auto;
-            max-width: 400px;
+            background: var(--branco);
+            padding: 25px 20px;
             border-radius: 12px;
-            box-shadow: 0 3px 10px #00000010;
+            text-align: center;
+            box-shadow: 0 4px 18px rgba(16, 26, 58, 0.07);
+            transition: transform 0.2s;
+        }
+
+        .category:hover {
+            transform: translateY(-4px);
+        }
+
+        .category .icon {
+            font-size: 38px;
+            margin-bottom: 12px;
         }
 
         .category h3 {
-            color: #6C4DFF;
+            color: var(--azul);
+            margin-bottom: 8px;
+        }
+
+        .category p {
+            color: #62697A;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .category button {
+            background: transparent;
+            border: 1px solid var(--violeta);
+            color: var(--violeta);
+            padding: 9px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .category button:hover {
+            background: var(--violeta);
+            color: var(--branco);
+        }
+
+        .notice {
+            display: none;
+            max-width: 700px;
+            margin: 20px auto 0;
+            padding: 14px;
+            border-radius: 8px;
+            background: #E8E3FF;
+            color: var(--azul);
+            text-align: center;
+        }
+
+        .seller-section {
+            background: var(--azul);
+            color: var(--branco);
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        .seller-section h2 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .seller-section p {
+            max-width: 650px;
+            margin: 0 auto 25px;
+            color: #E1E4F0;
         }
 
         footer {
-            background: #101A3A;
-            color: white;
+            background: #080F26;
+            color: #D5D9E6;
+            padding: 25px 5%;
             text-align: center;
-            padding: 25px 15px;
+            font-size: 14px;
+        }
+
+        footer strong {
+            color: var(--dourado);
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .hero {
+                padding: 55px 18px;
+            }
+
+            .search-area {
+                flex-direction: column;
+            }
+
+            .search-area .button {
+                width: 100%;
+            }
+
+            .section-title h2,
+            .seller-section h2 {
+                font-size: 25px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>DR ARMACI</h1>
-        <p>Create. Sell. Discover.</p>
-    </header>
+<header>
+    <div class="navbar">
+        <a href="#" class="logo">
+            DR <span>ARMACI</span>
+        </a>
 
-    <nav>
-        <a href="#inicio">Home</a>
-        <a href="#categorias">Categories</a>
-        <a href="#vendedores">Sellers</a>
-    </nav>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#categorias">Categorias</a>
+            <a href="#vendedores">Vendedores</a>
+        </nav>
+    </div>
+</header>
+
+<main>
 
     <section class="hero" id="inicio">
-        <h2>Your Ideas Deserve<br><span>A Global Stage</span></h2>
+        <h1>
+            As Tuas Ideias Merecem<br>
+            <span>um Palco Global</span>
+        </h1>
 
         <p>
-            Discover, buy and sell digital products
-            from creators around the world.
+            Descobre, compra e vende produtos digitais numa plataforma
+            criada para aproximar criadores e clientes de todo o mundo.
         </p>
 
-        <p>
-            Music, videos, e-books, designs,
-            photographs and software.
-        </p>
-
-        <a href="#categorias" class="button">
-            Explore Products
+        <a href="#categorias" class="button button-gold">
+            Explorar Produtos
         </a>
+
+        <form class="search-area" id="searchForm">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Pesquisar música, vídeos, livros..."
+                aria-label="Pesquisar produtos"
+            >
+
+            <button type="submit" class="button">
+                Pesquisar
+            </button>
+        </form>
+
+        <div class="notice" id="searchNotice" role="status"></div>
     </section>
 
-    <section class="categories" id="categorias">
-        <h2>Explore Categories</h2>
-
-        <div class="category">
-            <h3>Music & Audio</h3>
-            <p>Music, beats and sound effects.</p>
+    <section class="section" id="categorias">
+        <div class="section-title">
+            <h2>Explora as Categorias</h2>
+            <p>Encontra produtos digitais para os teus interesses e projetos.</p>
         </div>
 
-        <div class="category">
-            <h3>Video & Movies</h3>
-            <p>Videos, animations and digital films.</p>
+        <div class="categories">
+
+            <article class="category" data-category="Música e Áudio">
+                <div class="icon">🎵</div>
+                <h3>Música e Áudio</h3>
+                <p>Músicas, instrumentais, batidas e efeitos sonoros.</p>
+                <button type="button" class="category-button">
+                    Explorar
+                </button>
+            </article>
+
+            <article class="category" data-category="Vídeos e Filmes">
+                <div class="icon">🎬</div>
+                <h3>Vídeos e Filmes</h3>
+                <p>Vídeos, filmes independentes e conteúdos educativos.</p>
+                <button type="button" class="category-button">
+                    Explorar
+                </button>
+            </article>
+
+            <article class="category" data-category="Design e Fotografia">
+                <div class="icon">🎨</div>
+                <h3>Design e Fotografia</h3>
+                <p>Fotografias, ilustrações, logótipos e modelos gráficos.</p>
+                <button type="button" class="category-button">
+                    Explorar
+                </button>
+            </article>
+
+            <article class="category" data-category="Livros e Educação">
+                <div class="icon">📚</div>
+                <h3>Livros e Educação</h3>
+                <p>E-books, cursos, manuais e materiais de aprendizagem.</p>
+                <button type="button" class="category-button">
+                    Explorar
+                </button>
+            </article>
+
+            <article class="category" data-category="Software e Ferramentas">
+                <div class="icon">💻</div>
+                <h3>Software e Ferramentas</h3>
+                <p>Aplicações, modelos, recursos e ferramentas digitais.</p>
+                <button type="button" class="category-button">
+                    Explorar
+                </button>
+            </article>
+
         </div>
 
-        <div class="category">
-            <h3>Design & Photography</h3>
-            <p>Graphics, illustrations and photographs.</p>
-        </div>
-
-        <div class="category">
-            <h3>E-books & Education</h3>
-            <p>Books, courses and educational materials.</p>
-        </div>
-
-        <div class="category">
-            <h3>Software & Digital Tools</h3>
-            <p>Applications, templates and useful tools.</p>
-        </div>
+        <div class="notice" id="categoryNotice" role="status"></div>
     </section>
 
-    <section class="hero" id="vendedores">
-        <h2>Are You a Creator?</h2>
+    <section class="seller-section" id="vendedores">
+        <h2>Vende os Teus Produtos no DR ARMACI</h2>
 
         <p>
-            Prepare to share your work
-            with customers around the world.
+            És músico, escritor, designer, programador ou criador de conteúdo?
+            O objetivo é permitir que apresentes os teus produtos a clientes
+            de diferentes países.
         </p>
 
-        <a href="#" class="button"
-           onclick="alert('Seller registration will be added in a future version.'); return false;">
-            Start Selling
-        </a>
+        <button type="button" class="button button-gold" id="sellerButton">
+            Quero Ser Vendedor
+        </button>
+
+        <div class="notice" id="sellerNotice" role="status"></div>
     </section>
 
-    <footer>
-        <h3>DR ARMACI</h3>
-        <p>Create. Sell. Discover.</p>
-        <p>© 2026 DR ARMACI</p>
-    </footer>
+</main>
+
+<footer>
+    <p>
+        © <span id="currentYear"></span>
+        <strong>DR ARMACI</strong>.
+        Todos os direitos reservados.
+    </p>
+
+    <p>Uma plataforma digital em desenvolvimento.</p>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // Atualizar automaticamente o ano
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+        // Pesquisa demonstrativa
+        const searchForm = document.getElementById("searchForm");
+        const searchInput = document.getElementById("searchInput");
+        const searchNotice = document.getElementById("searchNotice");
+
+        searchForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const term = searchInput.value.trim();
+
+            searchNotice.style.display = "block";
+
+            if (!term) {
+                searchNotice.textContent =
+                    "Escreve o nome do produto que pretendes encontrar.";
+                searchInput.focus();
+                return;
+            }
+
+            searchNotice.textContent =
+                'Pesquisaste por "' + term +
+                '". O catálogo de produtos será ligado numa próxima versão.';
+        });
+
+        // Botões das categorias
+        const categoryButtons =
+            document.querySelectorAll(".category-button");
+
+        const categoryNotice =
+            document.getElementById("categoryNotice");
+
+        categoryButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const category = button.closest(".category")
+                    .getAttribute("data-category");
+
+                categoryNotice.style.display = "block";
+                categoryNotice.textContent =
+                    'Selecionaste "' + category +
+                    '". Os produtos desta categoria serão apresentados ' +
+                    "quando o catálogo estiver disponível.";
+
+                categoryNotice.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            });
+        });
+
+        // Registo demonstrativo de vendedores
+        const sellerButton = document.getElementById("sellerButton");
+        const sellerNotice = document.getElementById("sellerNotice");
+
+        sellerButton.addEventListener("click", function () {
+            sellerNotice.style.display = "block";
+            sellerNotice.textContent =
+                "O registo de vendedores ainda está em desenvolvimento. " +
+                "Esta função será ativada quando o sistema de contas estiver pronto.";
+        });
+
+    });
+</script>
 
 </body>
-</html>
+    </html>
